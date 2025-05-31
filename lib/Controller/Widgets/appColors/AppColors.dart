@@ -7,4 +7,5 @@ class AppColors{
   static Color  blackColor = Color(0xff000000);
   static Color  skyBlueColor = Color(0xff0EA5E9);
   static Color  turquoiseColor = Color(0xff63D9F3);
+  static Color  greenColor = Color(0xff3EDA73);
 }

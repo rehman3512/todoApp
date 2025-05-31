@@ -8,7 +8,7 @@ class AppAssets {
   static String calenderImage = "Assets/calendar.png";
   static String clipBoardImage = "Assets/clipboard.png";
   static String shieldImage = "Assets/Shield.png";
-  static String iconCheckMarkImage = "Assets/icon_check.png";
+  static String iconCheckMarkImage = "Assets/icon _check.png";
   static String groupCircleImage = "Assets/groupimg.png";
   static String sliderImage = "Assets/slider.png";
   static String circlecheckmarkImage = "Assets/checkmark.png";
