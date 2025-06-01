@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/alternativeButton/alternativeButton.dart';
 import 'package:todoapp/Controller/Widgets/appAssets/appAssets.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textFormFieldWidget/textFormFieldWidget.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
+import 'package:todoapp/View/AuthView/signInView/signInView.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -55,8 +57,11 @@ class _SignUpViewState extends State<SignUpView> {
                     TextWidget(text: "Already have an account?", color: AppColors.whiteColor,
                         fontsize: 14, fontweight: FontWeight.w500),
                     SizedBox(width: 5,),
-                    TextWidget(text: "sign in", color: AppColors.turquoiseColor,
-                        fontsize: 14, fontweight: FontWeight.w500),
+                    TextButton( onPressed: (){
+                      Get.to(()=>SignInView());
+                    }, child: TextWidget(text: "sign in", color: AppColors.turquoiseColor,
+                          fontsize: 14, fontweight: FontWeight.w500),
+                    ),
                   ],
                 ),
                 SizedBox(height: 30,),

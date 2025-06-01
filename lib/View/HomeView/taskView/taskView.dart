@@ -21,10 +21,10 @@ class _TaskViewState extends State<TaskView> {
           children: [
             SizedBox(height: 50,),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  Container(height: 40,width: 220,
+                  Container(height: 40,width: 210,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: AppColors.navyBlueColor
@@ -50,7 +50,7 @@ class _TaskViewState extends State<TaskView> {
                   ),
                   ),
                   SizedBox(width: 10,),
-                  Container(height: 40,width: 110,
+                  Container(height: 40,width: 105,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: AppColors.navyBlueColor

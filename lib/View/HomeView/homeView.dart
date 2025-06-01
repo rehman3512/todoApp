@@ -101,8 +101,11 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(height: 15,),
             ContainerWidget(),
             SizedBox(height: 20,),
-            TextWidget(text: "Complte Tasks", color: AppColors.whiteColor, fontsize: 14,
-                fontweight: FontWeight.w500),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextWidget(text: "Complte Tasks", color: AppColors.whiteColor, fontsize: 14,
+                  fontweight: FontWeight.w500),
+            ),
             SizedBox(height: 20,),
             Container( height: 60,
               margin: EdgeInsets.symmetric(horizontal: 20),
