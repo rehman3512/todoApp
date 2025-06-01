@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/appAssets/appAssets.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
+import 'package:todoapp/View/AuthView/signInView/signInView.dart';
 
-class TestView extends StatelessWidget {
+class NextView extends StatelessWidget {
   final String img;
   final String text;
-  const TestView({super.key,required this.img,required this.text});
+  const NextView({super.key,required this.img,required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,16 @@ class TestView extends StatelessWidget {
           Row( mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(width: 40,),
-            Image.asset(AppAssets.sliderImage),
-            SizedBox(width: 50,),
-            Image.asset(AppAssets.nextButtonImage)
-          ],),
+              Image.asset(AppAssets.sliderImage),
+              SizedBox(width: 50,),
+              InkWell( onTap: (){
+                Get.to(()=>SignInView());
+              }, child: Image.asset(AppAssets.circlecheckmarkImage))
+            ],),
           SizedBox(height: 40,)
         ],))
       ],),
     );
   }
 }
+
