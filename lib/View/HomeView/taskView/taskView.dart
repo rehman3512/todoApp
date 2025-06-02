@@ -12,17 +12,103 @@ class TaskView extends StatefulWidget {
 }
 
 class _TaskViewState extends State<TaskView> {
+
+  bool ischecked = false;
+
   showBottomSheet(BuildContext context) {
     showModalBottomSheet<void>(
         context:context,
         isScrollControlled: true,
         builder: (BuildContext context) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height/1.8,
+            height: MediaQuery.of(context).size.height/1.6,
             width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-              ],),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  SizedBox(height: 30,),
+                  Container(height: 45,width: 360,
+                  decoration: BoxDecoration(
+                    color: AppColors.navyBlueColor,
+                    borderRadius: BorderRadius.circular(5)
+                  ),child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(children: [
+                      Checkbox(
+                          // activeColor: AppColors.whiteColor,
+                          checkColor: AppColors.whiteColor,
+                          value: ischecked,
+                          onChanged: ((value){
+                            ischecked = value!;
+                            setState(() {
+
+                            });
+                          })
+                      ),
+                      SizedBox(width: 10,),
+                      TextWidget(text: "task", color: AppColors.whiteColor, fontsize: 16,
+                          fontweight: FontWeight.w400)
+                      ],),
+                  ),
+                  ),
+                  SizedBox(height: 20,),
+                  Container(height: 160,width: 360,
+                  decoration: BoxDecoration(
+                    color: AppColors.navyBlueColor,
+                    borderRadius: BorderRadius.circular(5)
+                  ),child: TextFormField(
+                      style: TextStyle(
+                        color: AppColors.whiteColor,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(Icons.sort,color: AppColors.whiteColor,),
+                        hintText: "Description",
+                        hintStyle: TextStyle(
+                            color: AppColors.whiteColor,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Row(children: [
+                    Container(height: 45, width: 155,
+                    decoration: BoxDecoration(
+                      color: AppColors.navyBlueColor,
+                      borderRadius: BorderRadius.circular(5)
+                    ),child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(children: [
+                        Icon(Icons.calendar_month,color: AppColors.whiteColor,),
+                        SizedBox(width: 10,),
+                        TextWidget(text: "Date", color: AppColors.whiteColor,
+                            fontsize: 16, fontweight: FontWeight.w400),
+                        ],),
+                    ),
+                    ),
+                    SizedBox(width: 15,),
+                    Container(height: 45, width: 155,
+                      decoration: BoxDecoration(
+                          color: AppColors.navyBlueColor,
+                          borderRadius: BorderRadius.circular(5)
+                      ),child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Row(children: [
+                          Icon(Icons.watch_later_outlined,color: AppColors.whiteColor,),
+                          SizedBox(width: 10,),
+                          TextWidget(text: "Time", color: AppColors.whiteColor,
+                              fontsize: 16, fontweight: FontWeight.w400),
+                        ],),
+                      ),
+                    )
+                  ],)
+                ],),
+            ),
           );
         }
     );
