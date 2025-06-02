@@ -22,6 +22,8 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,9 +59,15 @@ class _SignUpViewState extends State<SignUpView> {
                     color: AppColors.blackColor), text: "Password"),
                 SizedBox(height: 40,),
                 GestureDetector( onTap: () async{
+                  isloading = true;
                   await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: emailController.text.trim(),
-                      password: passwordController.text);
+                      password: passwordController.text).then((onValue){
+                    isloading=false;
+                    setState(() {
+
+                    });
+                  }).onError((error,handleError){});
                 }, child: Alternativebutton(text: "sign up")),
                 SizedBox(height: 15,),
                 Row(

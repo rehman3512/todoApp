@@ -9,6 +9,7 @@ import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textFormFieldWidget/textFormFieldWidget.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
 import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
+import 'package:todoapp/View/HomeView/homeView.dart';
 
 class SignInView extends StatefulWidget {
   SignInView({super.key});
@@ -64,9 +65,16 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   SizedBox(height: 15,),
                   GestureDetector( onTap: () async{
+                    isloading = true;
                     await FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: emailController.text.trim(),
-                        password: passwordController.text);
+                        password: passwordController.text).then((onValue){
+                          isloading=false;
+                          setState(() {
+                            
+                          });
+                          Get.to(()=>HomeView());
+                    }).onError((error,handleError){});
                   }, child: Alternativebutton(text: "sign in")),
                   SizedBox(height: 15,),
                   Row(
