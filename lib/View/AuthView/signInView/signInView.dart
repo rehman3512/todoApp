@@ -66,7 +66,10 @@ class _SignInViewState extends State<SignInView> {
                   SizedBox(height: 15,),
                   GestureDetector( onTap: () async{
                     isloading = true;
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    setState(() {
+
+                    });
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: emailController.text.trim(),
                         password: passwordController.text).then((onValue){
                           isloading=false;
@@ -74,7 +77,9 @@ class _SignInViewState extends State<SignInView> {
                             
                           });
                           Get.to(()=>HomeView());
-                    }).onError((error,handleError){});
+                    }).onError((error,handleError){
+                      print("Error${error.toString()}");
+                    });
                   }, child: Alternativebutton(text: "sign in")),
                   SizedBox(height: 15,),
                   Row(
