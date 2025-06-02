@@ -19,7 +19,7 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
 
-  TextEditingController userController = TextEditingController();
+  // TextEditingController userController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -51,8 +51,8 @@ class _SignUpViewState extends State<SignUpView> {
                   child: TextWidget(text: "create an account and join us now!", color: AppColors.whiteColor,
                       fontsize: 18, fontweight: FontWeight.w500),
                 ),
-                SizedBox(height: 30,),
-                TextFormFieldWidget(controller: userController,icon: Icon(Icons.person,color: AppColors.blackColor,), text: "Full Name"),
+                // SizedBox(height: 30,),
+                // TextFormFieldWidget(controller: userController,icon: Icon(Icons.person,color: AppColors.blackColor,), text: "Full Name"),
                 SizedBox(height: 30,),
                 TextFormFieldWidget(controller: emailController,icon: Icon(Icons.email,color: AppColors.blackColor), text: "E-mail"),
                 SizedBox(height: 30,),
@@ -67,13 +67,17 @@ class _SignUpViewState extends State<SignUpView> {
                   await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: emailController.text.trim(),
                       password: passwordController.text).then((onValue){
+                        isloading = false;
+                        setState(() {
+
+                        });
+                        Get.to(()=>HomeView());
+                  }).onError((error,handlerror){
                     isloading=false;
                     setState(() {
 
                     });
-                    Get.to(()=>HomeView());
-                  }).onError((error,handleError){
-                    print("Error${error.toString()}");
+                    Get.snackbar("Error", error.toString());
                   });
                 }, child: Alternativebutton(text: "sign up")),
                 SizedBox(height: 15,),

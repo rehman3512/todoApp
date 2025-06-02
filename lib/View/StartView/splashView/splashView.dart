@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'package:todoapp/Controller/Widgets/appAssets/appAssets.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
+import 'package:todoapp/View/HomeView/homeView.dart';
 import 'package:todoapp/View/StartView/onboardingView/onboardingView.dart';
 
 class SplashView extends StatefulWidget {
@@ -21,10 +23,19 @@ class _SplashViewState extends State<SplashView> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
-      // Navigator.push(context, MaterialPageRoute(
-      //     builder: (context)=>OnboardingView()));
-      Get.to(()=>OnboardingView());
+    islogin();
     });
+  }
+  islogin() async{
+    User? user=await FirebaseAuth.instance.currentUser;
+    if(user==null)
+      {
+        Get.off(()=>OnboardingView());
+      }
+    else
+      {
+        Get.off(()=>HomeView());
+      }
   }
 
   @override
