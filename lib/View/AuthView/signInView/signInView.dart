@@ -78,7 +78,11 @@ class _SignInViewState extends State<SignInView> {
                           });
                           Get.to(()=>HomeView());
                     }).onError((error,handleError){
-                      print("Error${error.toString()}");
+                      isloading=false;
+                      setState(() {
+
+                      });
+                      Get.snackbar("Error", error.toString());
                     });
                   }, child: Alternativebutton(text: "sign in")),
                   SizedBox(height: 15,),

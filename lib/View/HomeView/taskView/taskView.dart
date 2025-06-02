@@ -12,6 +12,21 @@ class TaskView extends StatefulWidget {
 }
 
 class _TaskViewState extends State<TaskView> {
+  showBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+        context:context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height/1.8,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+              ],),
+          );
+        }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +90,10 @@ class _TaskViewState extends State<TaskView> {
                   fontsize: 16, fontweight: FontWeight.w400),
             ),
             SizedBox(height: 30,),
-            ContainerWidget(),
+            InkWell( onTap: (){
+              showBottomSheet(context);
+            },
+                child: ContainerWidget()),
             SizedBox(height: 30,),
             ContainerWidget(),
             SizedBox(height: 30,),

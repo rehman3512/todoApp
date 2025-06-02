@@ -25,6 +25,7 @@ class TextFormFieldWidget extends StatelessWidget {
         fontWeight: FontWeight.w400,
       ),
       decoration: InputDecoration(
+        border: InputBorder.none,
         prefixIcon: icon,
         hintText: text,
         hintStyle: GoogleFonts.poppins(
