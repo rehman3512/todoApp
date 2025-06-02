@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/alternativeButton/alternativeButton.dart';
@@ -16,6 +17,11 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
+
+  TextEditingController userController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +49,18 @@ class _SignUpViewState extends State<SignUpView> {
                       fontsize: 18, fontweight: FontWeight.w500),
                 ),
                 SizedBox(height: 30,),
-                TextFormFieldWidget(icon: Icon(Icons.person,color: AppColors.blackColor,), text: "Full Name"),
+                TextFormFieldWidget(controller: userController,icon: Icon(Icons.person,color: AppColors.blackColor,), text: "Full Name"),
                 SizedBox(height: 30,),
-                TextFormFieldWidget(icon: Icon(Icons.email,color: AppColors.blackColor), text: "E-mail"),
+                TextFormFieldWidget(controller: emailController,icon: Icon(Icons.email,color: AppColors.blackColor), text: "E-mail"),
                 SizedBox(height: 30,),
-                TextFormFieldWidget(icon: Icon(Icons.lock,color: AppColors.blackColor), text: "Password"),
+                TextFormFieldWidget(controller: passwordController,icon: Icon(Icons.lock,
+                    color: AppColors.blackColor), text: "Password"),
                 SizedBox(height: 40,),
-                Alternativebutton(text: "sign up"),
+                GestureDetector( onTap: () async{
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: emailController.text.trim(),
+                      password: passwordController.text);
+                }, child: Alternativebutton(text: "sign up")),
                 SizedBox(height: 15,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/alternativeButton/alternativeButton.dart';
@@ -9,13 +11,17 @@ import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
 import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
 
 class SignInView extends StatefulWidget {
-  const SignInView({super.key});
+  SignInView({super.key});
 
   @override
   State<SignInView> createState() => _SignInViewState();
 }
 
 class _SignInViewState extends State<SignInView> {
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,32 +49,36 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   SizedBox(height: 30,),
                   TextFormFieldWidget(icon: Icon(Icons.email,color: AppColors.blackColor,),
-                      text: "E-mail"),
+                    text: "E-mail", controller: emailController,),
                   SizedBox(height: 30,),
                   TextFormFieldWidget(icon: Icon(Icons.lock,color: AppColors.blackColor,),
-                      text: "Password"),
+                      text: "Password",controller: passwordController,),
                   SizedBox(height: 15,),
                   ListTile(
-                      trailing: TextButton( onPressed: (){},
+                    trailing: TextButton( onPressed: (){},
                       child: TextWidget(text: "Forgot Password", color: AppColors.whiteColor,
                           fontsize: 14, fontweight: FontWeight.w500),
                     ),
                   ),
                   SizedBox(height: 15,),
-                  Alternativebutton(text: "sign in"),
+                  GestureDetector( onTap: () async{
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: emailController.text.trim(),
+                        password: passwordController.text);
+                  }, child: Alternativebutton(text: "sign in")),
                   SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    TextWidget(text: "Don't have an account?", color: AppColors.whiteColor, fontsize: 14,
-                        fontweight: FontWeight.w500),
-                    SizedBox(width: 5,),
-                    TextButton( onPressed: (){
-                      Get.to(()=>SignUpView());
-                    }, child: TextWidget(text: "sign up", color: AppColors.turquoiseColor, fontsize: 14,
+                      TextWidget(text: "Don't have an account?", color: AppColors.whiteColor, fontsize: 14,
                           fontweight: FontWeight.w500),
-                    ),
-                  ],),
+                      SizedBox(width: 5,),
+                      TextButton( onPressed: (){
+                        Get.to(()=>SignUpView());
+                      }, child: TextWidget(text: "sign up", color: AppColors.turquoiseColor, fontsize: 14,
+                          fontweight: FontWeight.w500),
+                      ),
+                    ],),
                   SizedBox(height: 30,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -81,7 +91,7 @@ class _SignInViewState extends State<SignInView> {
                       Image.asset(AppAssets.iphoneButtonImage),
                     ],),
                   )
-              ],),
+                ],),
             ),
           ),
         ],
@@ -89,3 +99,4 @@ class _SignInViewState extends State<SignInView> {
     );
   }
 }
+
