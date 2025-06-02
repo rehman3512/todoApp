@@ -22,6 +22,8 @@ class _SignInViewState extends State<SignInView> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
