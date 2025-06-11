@@ -79,7 +79,9 @@ class _TaskViewState extends State<TaskView> {
                     ),
                   ),
                   SizedBox(height: 20,),
-                  Row(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                     Container(height: 45, width: 155,
                     decoration: BoxDecoration(
                       color: AppColors.navyBlueColor,
