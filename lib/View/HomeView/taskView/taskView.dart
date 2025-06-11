@@ -12,6 +12,7 @@ class TaskView extends StatefulWidget {
 }
 
 class _TaskViewState extends State<TaskView> {
+  TextEditingController descriptonController = TextEditingController();
 
   bool ischecked = false;
 
@@ -58,6 +59,8 @@ class _TaskViewState extends State<TaskView> {
                     color: AppColors.navyBlueColor,
                     borderRadius: BorderRadius.circular(5)
                   ),child: TextFormField(
+                      controller: descriptonController,
+                      maxLines: null,
                       style: TextStyle(
                         color: AppColors.whiteColor,
                         fontWeight: FontWeight.w400,
