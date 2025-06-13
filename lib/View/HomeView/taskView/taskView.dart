@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
+import 'package:todoapp/Controller/Widgets/checkboxWidget/checkboxWidget.dart';
 import 'package:todoapp/Controller/Widgets/containerWidget/containerWidget.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
@@ -36,17 +37,7 @@ class _TaskViewState extends State<TaskView> {
                   ),child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(children: [
-                      Checkbox(
-                          // activeColor: AppColors.whiteColor,
-                          checkColor: AppColors.whiteColor,
-                          value: ischecked,
-                          onChanged: ((value){
-                            ischecked = value!;
-                            setState(() {
-
-                            });
-                          })
-                      ),
+                     CheckboxWidget(),
                       SizedBox(width: 10,),
                       TextWidget(text: "task", color: AppColors.whiteColor, fontsize: 16,
                           fontweight: FontWeight.w400)
@@ -78,7 +69,7 @@ class _TaskViewState extends State<TaskView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -111,7 +102,38 @@ class _TaskViewState extends State<TaskView> {
                         ],),
                       ),
                     )
-                  ],)
+                  ],),
+                  SizedBox(height: 15,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(height: 45, width: 155,
+                        decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: AppColors.skyBlueColor,
+                            width: 2)
+                        ),child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Center(child: TextWidget(text: "Cancel",
+                              color: AppColors.blackColor, fontsize: 16,
+                              fontweight: FontWeight.w400),)
+                        ),
+                      ),
+                      SizedBox(width: 15,),
+                      Container(height: 45, width: 155,
+                        decoration: BoxDecoration(
+                            color: AppColors.skyBlueColor,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: AppColors.skyBlueColor)
+                        ),child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Center(child: TextWidget(text: "Create",
+                              color: AppColors.whiteColor, fontsize: 16,
+                              fontweight: FontWeight.w400),)
+                        ),
+                      )
+                    ],)
                 ],),
             ),
           );
