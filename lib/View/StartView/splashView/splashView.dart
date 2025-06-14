@@ -24,6 +24,7 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
     islogin();
+      Get.to(()=>OnboardingView());
     });
   }
   islogin() async{
