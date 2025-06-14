@@ -19,11 +19,12 @@ class _TaskViewState extends State<TaskView> {
 
   showBottomSheet(BuildContext context) {
     showModalBottomSheet<void>(
+      backgroundColor: AppColors.whiteColor,
         context:context,
         isScrollControlled: true,
         builder: (BuildContext context) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height/1.6,
+            height: MediaQuery.of(context).size.height/1.9,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -69,7 +70,7 @@ class _TaskViewState extends State<TaskView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -103,7 +104,7 @@ class _TaskViewState extends State<TaskView> {
                       ),
                     )
                   ],),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
