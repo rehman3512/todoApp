@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/checkboxWidget/checkboxWidget.dart';
 import 'package:todoapp/Controller/Widgets/containerWidget/containerWidget.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
+
+
 
 class TaskView extends StatefulWidget {
   const TaskView({super.key});
@@ -122,16 +125,26 @@ class _TaskViewState extends State<TaskView> {
                         ),
                       ),
                       SizedBox(width: 15,),
-                      Container(height: 45, width: 155,
-                        decoration: BoxDecoration(
-                            color: AppColors.skyBlueColor,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: AppColors.skyBlueColor)
-                        ),child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Center(child: TextWidget(text: "Create",
-                              color: AppColors.whiteColor, fontsize: 16,
-                              fontweight: FontWeight.w400),)
+                      InkWell( onTap: () async{
+                        await FirebaseFirestore.instance.collection("insert").add({
+                          "description": descriptonController.text,
+                        });
+                        descriptonController.clear();
+                        setState(() {
+
+                        });
+                      },
+                        child: Container(height: 45, width: 155,
+                          decoration: BoxDecoration(
+                              color: AppColors.skyBlueColor,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: AppColors.skyBlueColor)
+                          ),child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Center(child: TextWidget(text: "Create",
+                                color: AppColors.whiteColor, fontsize: 16,
+                                fontweight: FontWeight.w400),)
+                          ),
                         ),
                       )
                     ],)
