@@ -2,7 +2,7 @@ class AppAssets {
   static String mainLogoImage = "Assets/mainlogo.png";
   static String googleButtonImage = "Assets/G_Button.png";
   static String iphoneButtonImage = "Assets/I_Button.png";
-  static String greenCheckMarkImage = "Assets/G_checkmark.png";
+  static String greenCheckMarkImage = "Assets/G_ceckmark.png";
   static String whiteCheckMarkImage = "Assets/W_ceckmark.png";
   static String settingImage = "Assets/setting.png";
   static String calenderImage = "Assets/calendar.png";
