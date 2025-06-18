@@ -22,8 +22,16 @@ class _FirebaseState extends State<Firebase> {
           await FirebaseFirestore.instance.collection("insert").add({
             "title": titleController,
             "description": descriptionController,
+
           });
-          ti
+          titleController.clear();
+          descriptionController.clear();
+          setState(() {
+
+          });
+          setState(() {
+            
+          });
       },
       ),
       body: Column(children: [
