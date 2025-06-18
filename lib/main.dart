@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todoapp/Firebase.dart';
 import 'package:todoapp/View/HomeView/taskView/taskView.dart';
 import 'package:todoapp/View/StartView/splashView/splashView.dart';
 
@@ -19,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashView()
+        home: Firebase()
     );
   }
 }
