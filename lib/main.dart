@@ -1,10 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:todoapp/View/AuthView/signInView/signInView.dart';
+import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
+import 'package:todoapp/View/HomeView/taskView/FireStore/Firebase.dart';
 import 'package:todoapp/View/HomeView/taskView/taskView.dart';
 import 'package:todoapp/View/StartView/splashView/splashView.dart';
+import 'package:todoapp/firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(MyApp());
 }
 
@@ -20,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashView()
+        home: FirebaseView()
     );
   }
 }

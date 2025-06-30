@@ -1,116 +1,86 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/textFormFieldWidget/textFormFieldWidget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Firebase extends StatefulWidget {
-  const Firebase({super.key});
+class FirebaseView extends StatefulWidget {
+  const FirebaseView({super.key});
 
   @override
-  State<Firebase> createState() => _FirebaseState();
+  State<FirebaseView> createState() => _FirebaseViewState();
 }
 
-@override
-class _FirebaseState extends State<Firebase> {
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  bool isLoading=false;
+class _FirebaseViewState extends State<FirebaseView> {
+  TextEditingController  titleController = TextEditingController();
+  TextEditingController  descriptionController = TextEditingController();
+  bool isloading = false;
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-  appBar: AppBar(
-  title: Text('Insert Data'),
-  ),
-  body: Column(
-  children: [
-  TextFieldWidget(
-  controller: titleController,
-  hintText: 'Enter title',
-  ),
-  TextFieldWidget(
-  controller: descriptionController,
-  hintText: 'Enter description',
-  ),
-  isLoading?CircularProgressIndicator():
-  FloatingActionButton(
-  onPressed: () async {
-  try
-  {
-  isLoading=true;
-  setState(() {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+        child: Column(
+          children: [
+          Container(height: 45,width: 280,
+          decoration: BoxDecoration(
+            color: AppColors.blueColor,
+            border: Border.all(color: AppColors.blueColor),
+            borderRadius: BorderRadius.circular(8),
+          ),child: TextFormField(
+              style: TextStyle(color: AppColors.whiteColor,fontSize: 10,
+                  fontWeight: FontWeight.w400),
+              controller: titleController,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Enetr your title",
+                hintStyle: TextStyle(color: AppColors.whiteColor,fontSize: 10,
+                fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+          SizedBox(height: 20,),
+          Container(height: 45,width: 280,
+            decoration: BoxDecoration(
+              color: AppColors.blueColor,
+              border: Border.all(color: AppColors.blueColor),
+              borderRadius: BorderRadius.circular(8),
+            ),child: TextFormField(
+              style: TextStyle(color: AppColors.whiteColor,fontSize: 10,
+                  fontWeight: FontWeight.w400),
+              controller: descriptionController,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Enetr your description",
+                hintStyle: TextStyle(color: AppColors.whiteColor,fontSize: 10,
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+            SizedBox(height: 30,),
+            isloading? CircularProgressIndicator():
+            FloatingActionButton(onPressed: () async{
+              isloading = true;
+              setState(() {
 
-  });
-  await FirebaseFirestore.instance.collection('insert').add({
-  'title': titleController.text,
-  'description':descriptionController.text
-  });
-  isLoading=false;
-  titleController.clear();
-  descriptionController.clear();
-  setState(() {
+              });
+              await FirebaseFirestore.instance.collection("insert").add({
+                "title": titleController.text,
+                "description": descriptionController.text,
+              }).then((onValue){
 
-  });
-  Navigator.pop(context);
+              }).onError((handleError,error){
+                isloading = false;
+                setState(() {
+
+                });
+                Get.snackbar("Error", handleError.toString());
+              },
+              );
+            },backgroundColor: AppColors.blueColor,
+            )
+        ],),
+      ),
+    );
   }
-  catch(error)
-  {
-  isLoading=false;
-  setState(() {
-
-  });
-  print('Error:-${error.toString()}');
-  }
-
-
-  // isLoading=true;
-  // setState(() {
-  //
-  // });
-  // await FirebaseFirestore.instance.collection('insert').add({
-  //   // key and value
-  //   'title': titleController.text,
-  //   'description':descriptionController.text
-  // }).then((onValue){
-  //   isLoading=false;
-  //   setState(() {
-  //
-  //   });
-  //   // success message------ snackbar-----
-  // }).onError((handleError,error){
-  //   print('Error----------------${handleError.toString()}');
-  //   isLoading=false;
-  //   setState(() {
-  //
-  //   });
-  // });
-  },
-  backgroundColor: Colors.blue,
-  )
-  ],
-  ),
-  );
-  }
-  }
-
-  class TextFieldWidget extends StatelessWidget {
-  TextEditingController controller;
-  String hintText;
-  TextFieldWidget(
-  {super.key, required this.controller, required this.hintText});
-
-  @override
-  Widget build(BuildContext context) {
-  return Container(
-  margin: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
-  decoration: BoxDecoration(
-  color: Colors.blue, borderRadius: BorderRadius.circular(10)),
-  child: TextFormField(
-  controller: controller,
-  style: TextStyle(color: Colors.white),
-  decoration: InputDecoration(
-  border: InputBorder.none,
-  hintText: hintText,
-  hintStyle: TextStyle(color: Colors.white)),
-  ));
-  }
-  }
+}

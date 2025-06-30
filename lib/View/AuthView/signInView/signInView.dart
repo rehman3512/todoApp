@@ -64,6 +64,7 @@ class _SignInViewState extends State<SignInView> {
                     ),
                   ),
                   SizedBox(height: 15,),
+                  isloading?CircularProgressIndicator():
                   GestureDetector( onTap: () async{
                     isloading = true;
                     setState(() {
@@ -71,19 +72,21 @@ class _SignInViewState extends State<SignInView> {
                     });
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: emailController.text.trim(),
-                        password: passwordController.text).then((onValue){
-                          isloading=false;
+                        password: passwordController.text.trim())
+                        .then((onValue){
+                          isloading = false;
                           setState(() {
-                            
+
                           });
                           Get.to(()=>HomeView());
-                    }).onError((error,handleError){
-                      isloading=false;
+                    }).onError((handleError,error){
+                      isloading = false;
                       setState(() {
 
                       });
-                      Get.snackbar("Error", error.toString());
+                      Get.snackbar("Error", handleError.toString());
                     });
+
                   }, child: Alternativebutton(text: "sign in")),
                   SizedBox(height: 15,),
                   Row(
