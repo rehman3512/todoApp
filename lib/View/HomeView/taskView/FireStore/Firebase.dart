@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/textFormFieldWidget/textFormFieldWidget.dart';
+import 'package:todoapp/View/HomeView/taskView/FireStore/fetch.dart';
 
 class FirebaseView extends StatefulWidget {
   const FirebaseView({super.key});
@@ -18,6 +19,11 @@ class _FirebaseViewState extends State<FirebaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context)=>FetchData())
+        );
+      }),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 30),
         child: Column(
@@ -68,7 +74,10 @@ class _FirebaseViewState extends State<FirebaseView> {
                 "title": titleController.text,
                 "description": descriptionController.text,
               }).then((onValue){
-
+                isloading= false;
+                setState(() {
+                  
+                });
               }).onError((handleError,error){
                 isloading = false;
                 setState(() {
