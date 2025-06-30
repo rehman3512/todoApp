@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todoapp/View/HomeView/taskView/FireStore/Firebase.dart';
 
 class FetchData extends StatefulWidget {
   const FetchData({super.key});
@@ -12,6 +14,9 @@ class _FetchDataState extends State<FetchData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Get.to(()=>FirebaseView());
+      }),
       body: StreamBuilder(stream: FirebaseFirestore.instance.collection("insert").snapshots(),
           builder: (context,snapshots){
         return ListView.builder(

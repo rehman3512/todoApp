@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:todoapp/View/AuthView/signInView/signInView.dart';
 import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
 import 'package:todoapp/View/HomeView/taskView/FireStore/Firebase.dart';
+import 'package:todoapp/View/HomeView/taskView/FireStore/fetch.dart';
 import 'package:todoapp/View/HomeView/taskView/taskView.dart';
 import 'package:todoapp/View/StartView/splashView/splashView.dart';
 import 'package:todoapp/firebase_options.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: FirebaseView()
+        home: FetchData()
     );
   }
 }
