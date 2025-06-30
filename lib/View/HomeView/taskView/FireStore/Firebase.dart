@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
-import 'package:todoapp/Controller/Widgets/textFormFieldWidget/textFormFieldWidget.dart';
 import 'package:todoapp/View/HomeView/taskView/FireStore/fetch.dart';
 
 class FirebaseView extends StatefulWidget {
@@ -70,7 +69,7 @@ class _FirebaseViewState extends State<FirebaseView> {
               setState(() {
 
               });
-              await FirebaseFirestore.instance.collection("insert").add({
+              await FirebaseFirestore.instance.collection("insert").doc("1").set({
                 "title": titleController.text,
                 "description": descriptionController.text,
               }).then((onValue){
