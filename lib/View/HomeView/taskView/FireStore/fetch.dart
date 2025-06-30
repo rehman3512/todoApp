@@ -25,6 +25,7 @@ class _FetchDataState extends State<FetchData> {
             return ListTile(
               title: Text(snapshots.data!.docs[index]["title"].toString()),
               subtitle: Text(snapshots.data!.docs[index]["description"].toString()),
+              trailing: Text(snapshots.data!.docs[index]["docId"].toString()),
             );
           },
         );
