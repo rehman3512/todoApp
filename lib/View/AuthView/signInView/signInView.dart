@@ -79,6 +79,8 @@ class _SignInViewState extends State<SignInView> {
 
                           });
                           Get.to(()=>HomeView());
+                          emailController.clear();
+                          passwordController.clear();
                     }).onError((handleError,error){
                       isloading = false;
                       setState(() {

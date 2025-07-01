@@ -95,6 +95,8 @@ class _SignUpViewState extends State<SignUpView> {
 
                                 });
                                 Get.to(()=>HomeView());
+                                emailController.clear();
+                                passwordController.clear();
                           }).onError((handleError,error){
                             isloading = false;
                             setState(() {
