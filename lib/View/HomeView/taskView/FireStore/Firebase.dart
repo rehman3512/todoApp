@@ -115,11 +115,11 @@ class _FirebaseViewState extends State<FirebaseView> {
 // titleController.clear();
 // descriptionController.clear();
 // }
-// catch(error)
-// {
-// isloading= false;
-// setState(() {
-//
-// });
-// Get.snackbar("Error", error.toString());
-// }
+catch(error)
+{
+isloading= false;
+setState(() {
+
+});
+Get.snackbar("Error", error.toString());
+}

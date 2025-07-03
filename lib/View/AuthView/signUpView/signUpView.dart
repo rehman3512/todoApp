@@ -161,31 +161,3 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 }
-
-
-try{
-String docId=DateTime.now().microsecondsSinceEpoch.toString();
-isloading = true;
-setState(() {
-
-});
-await FirebaseFirestore.instance.collection("insert").doc(docId).set({
-"title": titleController.text,
-"description": descriptionController.text,
-"docId": docId,
-},);
-isloading = false;
-setState(() {
-
-});
-titleController.clear();
-descriptionController.clear();
-}
-catch(error)
-{
-isloading= false;
-setState(() {
-
-});
-Get.snackbar("Error", error.toString());
-}
