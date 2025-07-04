@@ -102,24 +102,24 @@ class _FirebaseViewState extends State<FirebaseView> {
 // isloading = true;
 // setState(() {
 //
-});
-await FirebaseFirestore.instance.collection("insert").doc(docId).set({
-"title": titleController.text,
-"description": descriptionController.text,
-"docId": docId,
-},);
-isloading = false;
-// setState(() {
-//
 // });
-// titleController.clear();
-// descriptionController.clear();
-// }
-// catch(error)
-// {
-// isloading= false;
-// setState(() {
-//
+// await FirebaseFirestore.instance.collection("insert").doc(docId).set({
+// "title": titleController.text,
+// "description": descriptionController.text,
+// "docId": docId,
+// },);
+// isloading = false;
+setState(() {
+
+});
+titleController.clear();
+descriptionController.clear();
+}
+catch(error)
+{
+isloading= false;
+setState(() {
+
 // });
 // Get.snackbar("Error", error.toString());
 // }
