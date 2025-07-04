@@ -120,6 +120,6 @@ class _FirebaseViewState extends State<FirebaseView> {
 // isloading= false;
 // setState(() {
 //
-});
-Get.snackbar("Error", error.toString());
-}
+// });
+// Get.snackbar("Error", error.toString());
+// }
