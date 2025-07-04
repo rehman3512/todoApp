@@ -109,17 +109,17 @@ class _FirebaseViewState extends State<FirebaseView> {
 // "docId": docId,
 // },);
 // isloading = false;
-setState(() {
-
-});
-titleController.clear();
-descriptionController.clear();
-}
-catch(error)
-{
-isloading= false;
-setState(() {
-
+// setState(() {
+//
 // });
-// Get.snackbar("Error", error.toString());
+// titleController.clear();
+// descriptionController.clear();
 // }
+// catch(error)
+// {
+// isloading= false;
+// setState(() {
+//
+});
+Get.snackbar("Error", error.toString());
+}
