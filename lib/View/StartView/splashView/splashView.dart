@@ -6,6 +6,7 @@ import 'package:todoapp/Controller/Widgets/appAssets/appAssets.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
+import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
 import 'package:todoapp/View/HomeView/homeView.dart';
 import 'package:todoapp/View/StartView/onboardingView/onboardingView.dart';
 
@@ -24,9 +25,11 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
     islogin();
+    //   isChecked();
       Get.to(()=>OnboardingView());
     });
   }
+
   islogin() async{
     User? user=await FirebaseAuth.instance.currentUser;
     if(user==null)
@@ -38,6 +41,16 @@ class _SplashViewState extends State<SplashView> {
         Get.off(()=>HomeView());
       }
   }
+  // isChecked()
+  // {
+  //   if(FirebaseAuth.instance.currentUser!=null){
+  //     Get.to(()=>HomeView());
+  //   }
+  //   else
+  //   {
+  //     Get.to(()=>SignUpView());
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:todoapp/Controller/Widgets/appAssets/appAssets.dart';
 import 'package:todoapp/Controller/Widgets/appColors/AppColors.dart';
 import 'package:todoapp/Controller/Widgets/gradiantcolor/gradiantcolor.dart';
 import 'package:todoapp/Controller/Widgets/textWidget/textWidget.dart';
-import 'package:todoapp/View/AuthView/signInView/signInView.dart';
+import 'package:todoapp/View/AuthView/signUpView/signUpView.dart';
 
 class NextView extends StatelessWidget {
   final String img;
@@ -28,7 +28,7 @@ class NextView extends StatelessWidget {
               Image.asset(AppAssets.sliderImage),
               SizedBox(width: 50,),
               InkWell( onTap: (){
-                Get.to(()=>SignInView());
+                Get.to(()=>SignUpView());
               }, child: Image.asset(AppAssets.circlecheckmarkImage))
             ],),
           SizedBox(height: 40,)
